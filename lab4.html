@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебное резюме начинающего веб-разработчика и контактная форма.">
+  <title>Лабораторная 4 — Оформление резюме</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="page">
+  <header>
+    <img class="avatar" src="images/avatar.svg" alt="Условный портрет автора резюме" width="96" height="96">
+    <h1>Резюме начинающего веб-разработчика</h1>
+    <p>Студентка · Алматы</p>
+  </header>
+  <nav aria-label="Разделы резюме">
+    <a href="index.html">Все лабораторные</a>
+    <a href="#about">Обо мне</a>
+    <a href="#education">Образование</a>
+    <a href="#contact">Связаться</a>
+  </nav>
+  <main>
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p>Изучаю веб-программирование и создаю простые веб-страницы.</p>
+      <h3>Навыки</h3>
+      <ul><li>HTML5</li><li>CSS3</li><li>Основы JavaScript</li></ul>
+    </section>
+    <section id="education">
+      <h2>Образование и практика</h2>
+      <article>
+        <h3>Учебный проект «Резюме»</h3>
+        <p>Семантическая страница с навигацией и формой обратной связи.</p>
+      </article>
+    </section>
+    <section id="contact">
+      <h2>Связаться со мной</h2>
+      <form class="contact-form">
+        <p><label for="contact-name">Имя</label><br>
+          <input id="contact-name" name="contact_name" autocomplete="name" required minlength="2" maxlength="50" pattern=".*\S.*"></p>
+        <p><label for="contact-email">Электронная почта</label><br>
+          <input id="contact-email" name="contact_email" type="email" autocomplete="email" required maxlength="100"></p>
+        <p><label for="contact-phone">Телефон в формате +77001234567</label><br>
+          <input id="contact-phone" name="contact_phone" type="tel" autocomplete="tel" required pattern="\+7[0-9]{10}" minlength="12" maxlength="12" title="+7 и ещё 10 цифр"></p>
+        <button type="submit">Проверить данные</button>
+        <p class="form-result" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><p>Учебное резюме · Лабораторная работа №4</p></footer>
+</body>
+</html>

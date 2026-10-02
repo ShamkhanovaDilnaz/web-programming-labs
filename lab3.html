@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторная 3 — Регистрация</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="page">
+  <header><h1>Регистрация на учебный курс</h1></header>
+  <nav aria-label="Лабораторные работы"><a href="index.html">Все лабораторные</a></nav>
+  <main>
+    <p id="step-status" role="status">Шаг 1 из 3</p>
+    <form id="registration">
+      <fieldset>
+        <legend>1. Личные данные</legend>
+        <label for="full-name">Имя и фамилия</label>
+        <input id="full-name" name="full_name" autocomplete="name" required minlength="5" maxlength="61" pattern="[A-Za-zА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]{2,30} [A-Za-zА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]{2,30}" title="Два слова из букв, от 2 до 30 букв в каждом, разделённые одним пробелом">
+        <label for="email">Электронная почта</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="100">
+        <label for="phone">Телефон: +77001234567</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="\+7[0-9]{10}" minlength="12" maxlength="12" title="+7 и ещё 10 цифр">
+        <label for="age">Возраст (16–100)</label>
+        <input id="age" name="age" type="number" required min="16" max="100" step="1">
+        <button type="button" data-next>Далее</button>
+      </fieldset>
+      <fieldset hidden disabled>
+        <legend>2. Учебные интересы</legend>
+        <label for="courses">Курсы (можно выбрать несколько)</label>
+        <p id="courses-help">Для выбора нескольких вариантов на компьютере удерживайте Ctrl или Command.</p>
+        <select id="courses" name="courses" multiple size="3" required aria-describedby="courses-help">
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">JavaScript</option>
+        </select>
+        <p>Формат обучения</p>
+        <p><input id="online" name="format" type="radio" value="online" required> <label for="online">Онлайн</label></p>
+        <p><input id="offline" name="format" type="radio" value="offline"> <label for="offline">Очно</label></p>
+        <p>Дополнительные занятия</p>
+        <p><input id="practice" name="practice" type="checkbox" value="yes"> <label for="practice">Практика</label></p>
+        <p><input id="consultation" name="consultation" type="checkbox" value="yes"> <label for="consultation">Консультации</label></p>
+        <button type="button" data-back>Назад</button>
+        <button type="button" data-next>Далее</button>
+      </fieldset>
+      <fieldset hidden disabled>
+        <legend>3. Подтверждение</legend>
+        <label for="login">Логин: 3–20 латинских букв, цифр или знаков _</label>
+        <input id="login" name="login" autocomplete="username" required minlength="3" maxlength="20" pattern="[A-Za-z][A-Za-z0-9_]{2,19}" title="Начните с латинской буквы">
+        <p><input id="agreement" name="agreement" type="checkbox" value="accepted" required> <label for="agreement">Подтверждаю правильность данных</label></p>
+        <button type="button" data-back>Назад</button>
+        <button type="submit">Завершить</button>
+      </fieldset>
+      <p class="form-result" role="status"></p>
+    </form>
+  </main>
+  <footer><p>Лабораторная работа №3. Учебная форма, данные на сервер не отправляются.</p></footer>
+</body>
+</html>
