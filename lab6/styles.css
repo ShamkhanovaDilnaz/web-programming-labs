@@ -1,0 +1,63 @@
+/* Сначала стили для телефона: все основные блоки и карточки в один столбец. */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: #243447;
+  background: #f1f4f8;
+  font: 1rem/1.5 Arial, sans-serif;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "header" "sidebar" "catalog";
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.header, .sidebar, .product {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #c4cedb;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.catalog { grid-area: catalog; min-width: 0; }
+h1, h2, h3 { margin: 0 0 0.75rem; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; }
+a { color: #245a91; }
+
+/* На телефоне боковое меню становится горизонтальным списком ссылок. */
+.sidebar nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+.products { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.product { display: flex; flex-direction: column; }
+.product p { flex: 1; margin: 0 0 1rem; }
+.product footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+
+/* Планшет: меню слева, каталог справа. */
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    grid-template-areas: "header header" "sidebar catalog";
+  }
+  .sidebar nav { flex-direction: column; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Стандартный монитор: шире меню и больше внутренние отступы. */
+@media (min-width: 992px) {
+  .layout { grid-template-columns: 13rem minmax(0, 1fr); gap: 1.5rem; padding: 1.5rem; }
+  .header, .sidebar, .product { padding: 1.5rem; }
+}
+
+/* Широкий экран: три колонки товаров. */
+@media (min-width: 1200px) {
+  .layout { max-width: 90rem; margin: auto; }
+  .products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
