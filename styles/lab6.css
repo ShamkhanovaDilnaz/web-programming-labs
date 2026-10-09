@@ -37,8 +37,10 @@ a { color: #245a91; }
 .sidebar nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
 .products { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .product { display: flex; flex-direction: column; }
+.product img { display: block; width: 6rem; height: 6rem; margin: 0 auto 0.75rem; }
 .product p { flex: 1; margin: 0 0 1rem; }
 .product footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+.credit { margin: 1rem 0 0; font-size: 0.875rem; }
 
 /* Планшет: меню слева, каталог справа. */
 @media (min-width: 768px) {
