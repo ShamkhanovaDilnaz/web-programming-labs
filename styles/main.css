@@ -69,6 +69,28 @@ button {
 .form-result { margin-top: 1rem; }
 [hidden] { display: none; }
 
+/* Лабораторные 7 и 8. */
+.task-list { list-style: none; padding: 0; }
+.task-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 0.0625rem solid var(--border-color);
+}
+.task-text { flex: 1 1 100%; overflow-wrap: anywhere; }
+.completed .task-text { text-decoration: line-through; opacity: 0.65; }
+@media (min-width: 40rem) {
+  .task-text { flex-basis: 10rem; }
+}
+#task-count { margin-top: 1rem; }
+.validation-form { max-width: 34rem; }
+.validation-form .field { min-height: 9rem; }
+.validation-form input.input-error { border-color: #b42318; }
+.error-message { color: #b42318; font-size: 0.9rem; }
+#validation-result { margin-top: 1rem; }
+
 /* Лабораторная 5: общий макет Grid, компоненты Flexbox. */
 .dashboard {
   display: grid;

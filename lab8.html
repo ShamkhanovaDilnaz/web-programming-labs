@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторная 8 — Проверка формы</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="js/lab8.js" defer></script>
+</head>
+<body class="page">
+  <header><h1>Проверка регистрационной формы</h1><p>Лабораторная работа №8</p></header>
+  <nav aria-label="Навигация"><a href="index.html">Все лабораторные</a></nav>
+  <main>
+    <section>
+      <h2>Введите данные</h2>
+      <form id="validation-form" class="validation-form" novalidate>
+        <div class="field">
+          <label for="check-email">Электронная почта</label>
+          <input id="check-email" name="email" type="email" autocomplete="email" placeholder="name@example.com">
+        </div>
+        <div class="field">
+          <label for="check-password">Пароль</label>
+          <input id="check-password" name="password" type="password" autocomplete="new-password" placeholder="От 8 символов: заглавная буква, цифра, знак">
+        </div>
+        <div class="field">
+          <label for="check-phone">Телефон в международном формате</label>
+          <input id="check-phone" name="phone" type="tel" autocomplete="tel" placeholder="+77001234567">
+        </div>
+        <button type="submit">Проверить</button>
+        <p id="validation-result" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><p>Учебная форма: данные на сервер не отправляются.</p></footer>
+</body>
+</html>

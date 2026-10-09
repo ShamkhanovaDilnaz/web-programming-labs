@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторная 7 — Список задач</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="page">
+  <header><h1>Список задач</h1><p>Лабораторная работа №7</p></header>
+  <nav aria-label="Навигация"><a href="index.html">Все лабораторные</a></nav>
+  <main>
+    <section>
+      <h2>Мои задачи</h2>
+      <form id="todo-form">
+        <label for="task-input">Новая задача</label>
+        <input id="task-input" name="task" type="text" maxlength="100" required>
+        <button type="submit">Добавить</button>
+      </form>
+      <p id="task-count" role="status">Всего: 0, выполнено: 0</p>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+  </main>
+  <footer><p>Задачи хранятся в памяти браузера до обновления страницы.</p></footer>
+</body>
+</html>

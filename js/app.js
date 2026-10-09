@@ -60,3 +60,73 @@ if (registration) {
     steps.forEach(function (step, index) { step.disabled = index !== currentStep; });
   });
 }
+
+// Лабораторная 7: один обработчик для всех кнопок списка.
+const todoForm = document.querySelector('#todo-form');
+if (todoForm) {
+  const input = document.querySelector('#task-input');
+  const list = document.querySelector('#task-list');
+  const count = document.querySelector('#task-count');
+  const tasks = [];
+  let nextId = 1;
+
+  function updateCount() {
+    count.textContent = 'Всего: ' + tasks.length + ', выполнено: ' + tasks.filter(function (task) {
+      return task.done;
+    }).length;
+  }
+
+  todoForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) {
+      input.value = '';
+      input.reportValidity();
+      return;
+    }
+
+    const task = { id: nextId++, text: text, done: false };
+    tasks.push(task);
+
+    const item = document.createElement('li');
+    item.dataset.id = String(task.id);
+    const label = document.createElement('span');
+    label.className = 'task-text';
+    label.textContent = task.text;
+    const doneButton = document.createElement('button');
+    doneButton.type = 'button';
+    doneButton.dataset.action = 'toggle';
+    doneButton.textContent = 'Готово';
+    doneButton.setAttribute('aria-pressed', 'false');
+    const deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.dataset.action = 'delete';
+    deleteButton.textContent = 'Удалить';
+    item.append(label, doneButton, deleteButton);
+    list.appendChild(item);
+
+    input.value = '';
+    input.focus();
+    updateCount();
+  });
+
+  list.addEventListener('click', function (event) {
+    const button = event.target.closest('button');
+    if (!button || !list.contains(button)) return;
+    const item = button.closest('li');
+    const id = Number(item.dataset.id);
+    const index = tasks.findIndex(function (task) { return task.id === id; });
+    if (index === -1) return;
+
+    if (button.dataset.action === 'delete') {
+      tasks.splice(index, 1);
+      item.remove();
+    } else if (button.dataset.action === 'toggle') {
+      tasks[index].done = !tasks[index].done;
+      item.classList.toggle('completed', tasks[index].done);
+      button.textContent = tasks[index].done ? 'Вернуть' : 'Готово';
+      button.setAttribute('aria-pressed', String(tasks[index].done));
+    }
+    updateCount();
+  });
+}
